@@ -4,7 +4,6 @@ Step 12 final result
 @using CRUD.Services;
 @inherits OwningComponentBase<EmpServices>
 
-
 <h1 class="text-center">CRUD</h1>
 
 <table class="table">
@@ -29,24 +28,19 @@ Step 12 final result
 
 
 <div>
-    <form>
-        <input type="text" placeholder="Name..." @bind="Empname" required />
-        <input type="text" placeholder="Department..." @bind="Department" />
-        <input type="number" placeholder="Salary..." @bind="Salary" />
-       
+    <EditForm Model="insert" OnInvalidSubmit="Inserts">
+        <input type="text" placeholder="Name..." @bind="insert.Empname" />
+        <input type="text" placeholder="Department..." @bind="insert.Department" />
+        <input type="number" placeholder="Salary..." @bind="insert.Salary" />
+        <div>
             <button type="submit" class="btn btn-success" @onclick="Inserts">Send</button>
-        
-    </form>
+        </div>
+    </EditForm>
 </div>
 
 @code{
-    
     List<EmpClass> DisplayData;
     EmpClass insert = new EmpClass();
-    
-    public string Empname { get; set; }
-    public string Department { get; set; }
-    public int Salary { get; set; }
 
     protected override void OnInitialized()
     {
@@ -55,21 +49,8 @@ Step 12 final result
 
     void Inserts()
     {
-        if(Empname == "")
-        {
-            return;
-            }
-        else
-        {
-            insert.Empname = Empname;
-            insert.Department = Department;
-            insert.Salary = Salary;
-            insert.EmpId = 0;
-            Service.Addemployee(insert);
-            DisplayData = Service.GetEmployees();
-
-        }
-
-
+        insert.EmpId = 0;
+        Service.Addemployee(insert);
+        DisplayData = Service.GetEmployees(); 
     }
 }
