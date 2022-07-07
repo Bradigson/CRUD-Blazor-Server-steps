@@ -1,0 +1,19 @@
+Step 3
+Agregamos la class ApplicationDbContext;
+
+
+using Microsoft.EntityFrameworkCore;
+
+
+namespace CRUD.Data
+{
+    public class AplicationDbContext : DbContext
+    {
+        public AplicationDbContext(DbContextOptions<AplicationDbContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<EmpClass> Emptable { get; set; }
+    }
+}
