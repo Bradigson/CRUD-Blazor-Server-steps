@@ -1,0 +1,4 @@
+Step 10
+1-Configuramos la carpeta servicio en el Startup
+using CRUD.Services;
+services.AddScoped<EmpServices>();
