@@ -11,12 +11,14 @@ Configuramos la vista del CRUD
 
 
 2-Agregamos la primera parte del code
-    List<EmpClass> DisplayData;
-protected override void OnInitialized()
-    {
-        DisplayData = Service.GetEmployees();
-    }
+@code{
+            List<EmpClass> DisplayData;
+        protected override void OnInitialized()
+            {
+                DisplayData = Service.GetEmployees();
+            }
     
+    }
     
     
 3-creamos la tabla que mostrara los datos
