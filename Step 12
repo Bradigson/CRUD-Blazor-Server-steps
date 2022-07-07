@@ -1,0 +1,75 @@
+Step 12 final result
+@page "/"
+@using CRUD.Data;
+@using CRUD.Services;
+@inherits OwningComponentBase<EmpServices>
+
+
+<h1 class="text-center">CRUD</h1>
+
+<table class="table">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Salary</th>
+    </tr>
+    @foreach(var item in DisplayData)
+        {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.Empname</td>
+            <td>@item.Department</td>
+            <td>@item.Salary</td>
+        </tr>
+                
+        }
+
+</table>
+
+
+<div>
+    <form>
+        <input type="text" placeholder="Name..." @bind="Empname" required />
+        <input type="text" placeholder="Department..." @bind="Department" />
+        <input type="number" placeholder="Salary..." @bind="Salary" />
+       
+            <button type="submit" class="btn btn-success" @onclick="Inserts">Send</button>
+        
+    </form>
+</div>
+
+@code{
+    
+    List<EmpClass> DisplayData;
+    EmpClass insert = new EmpClass();
+    
+    public string Empname { get; set; }
+    public string Department { get; set; }
+    public int Salary { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DisplayData = Service.GetEmployees();
+    }
+
+    void Inserts()
+    {
+        if(Empname == "")
+        {
+            return;
+            }
+        else
+        {
+            insert.Empname = Empname;
+            insert.Department = Department;
+            insert.Salary = Salary;
+            insert.EmpId = 0;
+            Service.Addemployee(insert);
+            DisplayData = Service.GetEmployees();
+
+        }
+
+
+    }
+}
