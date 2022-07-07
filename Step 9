@@ -1,0 +1,41 @@
+Step 9
+Configuramos la vista del CRUD
+
+
+1-Agregamos las dependencias
+@page "/"
+@using CRUD.Data;
+@using CRUD.Services;
+@inherits OwningComponentBase<EmpServices>
+
+
+
+2-Agregamos la primera parte del code
+    List<EmpClass> DisplayData;
+protected override void OnInitialized()
+    {
+        DisplayData = Service.GetEmployees();
+    }
+    
+    
+    
+3-creamos la tabla que mostrara los datos
+<table class="table">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Salary</th>
+    </tr>
+    @foreach(var item in DisplayData)
+        {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.Empname</td>
+            <td>@item.Department</td>
+            <td>@item.Salary</td>
+        </tr>
+                
+        }
+
+</table>
