@@ -1,0 +1,17 @@
+Step 5
+Agregamos el cpnnection string a appsetting.json
+
+
+{
+  "ConnectionStrings": {
+    "Myconnection": "Data Source=LAPTOP-8NN9M6EH;Initial Catalog=Empleado;Integrated Security=True"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*"
+}
