@@ -1,0 +1,32 @@
+Step 8
+
+1- Agregamos la carpeta Service;
+2-Agregamos la clase EmpService
+
+
+using CRUD.Data;
+
+namespace CRUD.Services
+{
+    public class EmpServices
+    {
+        protected readonly AplicationDbContext _dbcontext;
+
+        public EmpServices(AplicationDbContext _db)
+        {
+            _dbcontext = _db;
+        }
+
+        public List<EmpClass> GetEmployees()
+        {
+            return _dbcontext.Emptable.ToList();
+        }
+
+        public bool Addemployee(EmpClass ecadd)
+        {
+            _dbcontext.Emptable.Add(ecadd);
+            _dbcontext.SaveChanges();
+            return true;
+        }
+    }
+}
