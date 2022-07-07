@@ -1,0 +1,10 @@
+Step 7
+agregamos la migracion
+
+1-tools
+2-Nuget Package Manager
+3-Package Manager console
+
+4-agregamos el comando
+  add-migration Startemptable
+  update-database
