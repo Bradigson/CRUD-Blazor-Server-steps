@@ -1,0 +1,7 @@
+Step #1
+
+Descargar los paquetes
+Microsoft.EntityFramework.Core 5.0.17
+Microsoft.EntityFrameworkCore.Tools 5.0.17
+Microsoft.EntityFramework.Core.SqlServer 5.0.17
+
