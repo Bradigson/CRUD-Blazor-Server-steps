@@ -1,5 +1,5 @@
 Step 3
-Agregamos la class ApplicationDbContext;
+Agregamos la class ApplicationDbContext en la carpeta Data;
 
 
 using Microsoft.EntityFrameworkCore;
