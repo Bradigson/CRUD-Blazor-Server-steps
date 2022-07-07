@@ -1,0 +1,21 @@
+Step2
+Agregamos la clas EmpClass en la carpeta Data;
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CRUD.Data
+{
+    public class EmpClass
+    {
+        [Key]
+        public  int EmpId { get; set; }
+        public  string Empname { get; set; }
+        public string Department { get; set; }
+        public int Salary { get; set; }
+    }
+}
