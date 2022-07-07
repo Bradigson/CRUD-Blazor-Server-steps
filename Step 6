@@ -1,0 +1,12 @@
+Step 6
+Configuramos el Starup.cs
+
+using Microsoft.EntityFrameworkCore;
+
+ public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Myconnection")));
+   
+            
+
+        }
