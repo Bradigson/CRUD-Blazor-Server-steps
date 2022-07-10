@@ -1,0 +1,56 @@
+Step 13 all 
+@page "/"
+@using CRUD.Data;
+@using CRUD.Services;
+@inherits OwningComponentBase<EmpServices>
+
+<h1 class="text-center">CRUD</h1>
+
+<table class="table">
+    <tr>
+        <th>Employee Id</th>
+        <th>Employee Name</th>
+        <th>Department</th>
+        <th>Salary</th>
+    </tr>
+    @foreach(var item in DisplayData)
+        {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.Empname</td>
+            <td>@item.Department</td>
+            <td>@item.Salary</td>
+        </tr>
+                
+        }
+
+</table>
+
+
+<div>
+    <EditForm Model="insert" OnInvalidSubmit="Inserts">
+        <input type="text" placeholder="Name..." @bind="insert.Empname" />
+        <input type="text" placeholder="Department..." @bind="insert.Department" />
+        <input type="number" placeholder="Salary..." @bind="insert.Salary" />
+        <div>
+            <button type="submit" class="btn btn-success" @onclick="Inserts">Send</button>
+        </div>
+    </EditForm>
+</div>
+
+@code{
+    List<EmpClass> DisplayData;
+    EmpClass insert = new EmpClass();
+
+    protected override void OnInitialized()
+    {
+        DisplayData = Service.GetEmployees();  
+    }
+
+    void Inserts()
+    {
+        insert.EmpId = 0;
+        Service.Addemployee(insert);
+        DisplayData = Service.GetEmployees(); 
+    }
+}
