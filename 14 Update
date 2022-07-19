@@ -1,0 +1,35 @@
+Update
+
+
+1- en la clase de la carpeta servicio
+  public EmpClass Getempdetails(int empid)
+        {
+            EmpClass editobj = new EmpClass();
+            return _dbcontext.Emptable.FirstOrDefault(u => u.EmpId == empid);
+        }
+        
+        // el EmpClass viene de la carpeta Data y el Emptable de la clase AplicationDbContext;
+        
+        
+        
+2- en el index
+ void EditRec(EmpClass ecobj)
+    {
+        insert = ecobj;
+    }
+    
+    // el insert viene del objeto de insertar datos
+ 
+ 
+ 3- agregamos la fuincion EditRec al boton de editar
+  @foreach(var item in DisplayData)
+        {
+        <tr>
+            <td>@item.EmpId</td>
+            <td>@item.Empname</td>
+            <td>@item.Department</td>
+            <td>@item.Salary</td>
+            <td><button class="btn btn-warning"  @onclick="(()=> EditRec(item))">Updade</button></td>
+        </tr>
+                
+        }
