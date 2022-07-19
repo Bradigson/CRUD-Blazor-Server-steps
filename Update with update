@@ -1,0 +1,60 @@
+en clase de la carpeta service
+public EmpClass Getempdetails(int empid)
+        {
+            EmpClass editobj = new EmpClass();
+            return _dbcontext.Emptable.FirstOrDefault(u => u.EmpId == empid);
+        }
+
+        public bool UpdateEmp(EmpClass updatedetails)
+        {
+            var Getemp = _dbcontext.Emptable.FirstOrDefault(u => u.EmpId == updatedetails.EmpId);
+            if(Getemp != null)
+            {
+                Getemp.Empname = updatedetails.Empname;
+                Getemp.Department = updatedetails.Department;
+                Getemp.Salary = updatedetails.Salary;
+                _dbcontext.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        
+ 
+ 
+ 
+ en el codigo de insertar y edictar
+  void Inserts()
+    {
+        var ObjUpdate = false;
+        if(insert.EmpId > 0)
+        {
+            ObjUpdate = Service.UpdateEmp(insert);
+            
+        }
+        else
+        {
+            insert.EmpId = 0;
+            Service.Addemployee(insert);
+        }
+
+        DisplayData = Service.GetEmployees();
+    }
+
+    void EditRec(EmpClass ecobj)
+    {
+        insert = ecobj;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    en el boton de editar
+    <td><button class="btn btn-warning"  @onclick="(()=> EditRec(item))">Updade</button></td>
