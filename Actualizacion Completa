@@ -1,0 +1,48 @@
+paso 1
+
+este es el for eache que debe contener el reportInto : 
+ @foreach (var reportInfo in DisplatFromData.Where(s => s.clienteName.ToUpper().Contains(searchWorld.ToUpper())))
+ 
+ 
+ paso 2
+<td><a class="btn btn-primary shadow" style="width: 7rem; padding: 0;" data-bs-toggle="modal" href="#exampleModalToggle-2" 
+                               @onclick="(() => EditForm(reportInfo))" role="button">Cotizar</a></td>
+                               
+                               
+                               
+                               
+paso 3                            
+void EditForm(FormClass editobj)
+    {
+        insert = editobj;
+
+    }
+
+
+
+
+
+
+paso 3
+public string cotizacion { get; set; }
+    void update()
+    {
+        var ObjUpdate = false;
+        if (insert.Id > 0)
+        {
+
+
+            insert.Cotizacion = cotizacion;
+            ObjUpdate = Service.UpdateForm(insert);
+
+        }
+        else
+        {
+            //Service.Addemployee(insert);
+        }
+        DisplatFromData = Service.GetFormData();
+    }
+    
+    
+    
+    paso 4 el button guardar ejecuta el metodo update
