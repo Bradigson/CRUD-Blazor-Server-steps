@@ -11,6 +11,39 @@ Update
         // el EmpClass viene de la carpeta Data y el Emptable de la clase AplicationDbContext;
         
         
+         public bool UpdateForm (FormClass updatedetails)
+        {
+            var getFForm = _dbcontext.FormData.FirstOrDefault(u => u.noExpediente == updatedetails.noExpediente);
+            if(getFForm != null)
+            {
+                //Row number one
+                getFForm.noExpediente = updatedetails.noExpediente;
+                getFForm.fechaDespacho = updatedetails.fechaDespacho;
+                getFForm.horaDespacho = updatedetails.horaDespacho;
+                getFForm.fechaRetorno = updatedetails.fechaRetorno;
+                getFForm.horaRetorno = updatedetails.horaRetorno;
+
+                _dbcontext.SaveChanges();
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 2- en el index
  void EditRec(EmpClass ecobj)
@@ -19,6 +52,31 @@ Update
     }
     
     // el insert viene del objeto de insertar datos
+ 
+ //update base on cotizacion and workOrder
+    public string cotizacion { get; set; }
+    void update()
+    {
+        var ObjUpdate = false;
+        if (insert.Id > 0)
+        {
+
+
+            insert.Cotizacion = cotizacion;
+            ObjUpdate = Service.UpdateForm(insert);
+
+        }
+        else
+        {
+            //Service.Addemployee(insert);
+        }
+        DisplatFromData = Service.GetFormData();
+    }
+ 
+ 
+ 
+ 
+ 
  
  
  3- agregamos la fuincion EditRec al boton de editar
